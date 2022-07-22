@@ -15,13 +15,19 @@ function Book(title, author, numPages, readYet) {
     }
 }
 
-// console.log(hobbit.info());
-
 let myLibrary = [];
 
 function addBookToLibrary() {
     let book = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
     myLibrary.push(book);
+    displayBooks();
+}
+
+// Remove a book from the myLibrary array.
+function removeBook(bookNumber) {
+    console.log(bookNumber);
+    myLibrary.splice(bookNumber, 1);
+    displayBooks();
 }
 
 function displayBooks() {
@@ -41,6 +47,12 @@ function displayBooks() {
         const book = document.createElement('div');
         book.classList.add('book');
         book.textContent = myLibrary[i].info();
+
+        const btn = document.createElement('button');
+        btn.textContent = 'REMOVE';
+        btn.addEventListener('click', function() {removeBook(i-1);});
+        book.appendChild(btn);
+
         display.appendChild(book);
     }
 
@@ -48,6 +60,7 @@ function displayBooks() {
     const newBookBtn = document.createElement('button');
     newBookBtn.classList.add('new-book-button');
     newBookBtn.textContent = 'NEW BOOK';
+    newBookBtn.addEventListener('click', function() {addBookToLibrary();});
     display.appendChild(newBookBtn);
 }
 
