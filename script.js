@@ -24,6 +24,7 @@ function addBookToLibrary() {
 }
 
 // Remove a book from the myLibrary array.
+// THIS IS REMOVING THE LAST BOOK ONLY, NOT THE SPECIFIC BOOK YOU CLICK ON
 function removeBook(bookNumber) {
     console.log(bookNumber);
     myLibrary.splice(bookNumber, 1);
@@ -50,6 +51,7 @@ function displayBooks() {
 
         const btn = document.createElement('button');
         btn.textContent = 'REMOVE';
+        // THIS IS REMOVING THE LAST BOOK ONLY, NOT THE SPECIFIC BOOK YOU CLICK ON
         btn.addEventListener('click', function() {removeBook(i-1);});
         book.appendChild(btn);
 
