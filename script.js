@@ -17,7 +17,6 @@ function Book(title, author, numPages, readYet) {
 
 // console.log(hobbit.info());
 
-const display = document.querySelector('#display');
 let myLibrary = [];
 
 function addBookToLibrary() {
@@ -26,8 +25,16 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-    display.textContent = myLibrary[0].info();
+    for(i = 0; i < myLibrary.length; i++) {
+        const book = document.createElement('div');
+        book.textContent = myLibrary[i].info();
+        display.appendChild(book);
+    }
 }
 
-addBookToLibrary(); // adds the hobbit book to myLibrary array
-displayBooks(); // displays info() from the book to the screen/div
+const display = document.querySelector('#display');
+
+
+addBookToLibrary();
+addBookToLibrary();
+displayBooks();
