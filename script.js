@@ -43,10 +43,15 @@ function displayBooks() {
         book.textContent = myLibrary[i].info();
         display.appendChild(book);
     }
+
+    // Creates the NEW BOOK button and places it after the last book displayed.
+    const newBookBtn = document.createElement('button');
+    newBookBtn.classList.add('new-book-button');
+    newBookBtn.textContent = 'NEW BOOK';
+    display.appendChild(newBookBtn);
 }
 
 const display = document.querySelector('#display');
-
 
 addBookToLibrary();
 addBookToLibrary();
