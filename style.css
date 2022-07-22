@@ -1,0 +1,11 @@
+#display {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.book {
+    background-color: aquamarine;
+    width: 100px;
+    height: 140px;
+}

@@ -25,8 +25,21 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
+    // This while loop removes all children of display so that the display is
+    // "cleared." This prevents duplicate books from being displayed if you try
+    // to displayBooks twice or more in a row.
+    var child = display.lastElementChild;
+    while(child) {
+        display.removeChild(child);
+        child = display.lastElementChild;
+    }
+
+    // Creates a new DOM element book, adds textContent to it equal to the current
+    // book from the myLibrary array, then appends the element as a child to the
+    // display element.
     for(i = 0; i < myLibrary.length; i++) {
         const book = document.createElement('div');
+        book.classList.add('book');
         book.textContent = myLibrary[i].info();
         display.appendChild(book);
     }
@@ -35,6 +48,12 @@ function displayBooks() {
 const display = document.querySelector('#display');
 
 
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
+addBookToLibrary();
 addBookToLibrary();
 addBookToLibrary();
 displayBooks();
