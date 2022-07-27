@@ -20,7 +20,7 @@ function Book(title, author, numPages, readYet) {
 
     const book = document.createElement('div');
     book.classList.add('book');
-    // this id will be used later when we have to delete specific books
+    // this #id will be used later when we have to delete specific books
     book.id = this.bookNumber;
     book.textContent = this.info();
     const btn = document.createElement('button');
@@ -78,18 +78,22 @@ function displayBooks() {
         display.appendChild(book);
     }
 
-    // Creates the NEW BOOK button and places it after the last book displayed.
-    const newBookBtn = document.createElement('button');
-    newBookBtn.classList.add('new-book-button');
-    newBookBtn.textContent = 'NEW BOOK';
-    newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
-    display.appendChild(newBookBtn);
+    // // Creates the NEW BOOK button and places it after the last book displayed.
+    // const newBookBtn = document.createElement('button');
+    // newBookBtn.classList.add('new-book-button');
+    // newBookBtn.textContent = 'NEW BOOK';
+    // newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
+    // display.appendChild(newBookBtn);
 }
 
 const display = document.querySelector('#display');
+
 myLibrary[0] = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 myLibrary[1] = new Book('The Return of the King', 'J.R.R. Tolkien', 295, false);
 
+// Add the event listener to the NEW BOOK button, and have it create a new book.
+const newBookBtn = document.getElementById('new-book-button');
+newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
 
 // addBookToLibrary('The Hobbit');
 // addBookToLibrary('The Great Gatsby');
