@@ -14,23 +14,6 @@ function Book(title, author, numPages, readYet) {
             'not read yet');
         }
     }
-
-    // the code below creates the dom element displaying the book inside of
-    // the object creator function.
-
-    // const book = document.createElement('div');
-    // book.classList.add('book');
-    // // this #id will be used later when we have to delete specific books
-    // book.id = this.bookNumber;
-    // book.textContent = this.info();
-    // const btn = document.createElement('button');
-    // btn.textContent = 'REMOVE';
-    // // when you click the REMOVE button, execute the removeBook() function.
-    // // btn.addEventListener('click', () => {removeBook(this);});
-    // // btn.addEventListener('click', () => {removeBook(book.id);});
-    // btn.addEventListener('click', () => {removeBook(this.bookNumber);});
-    // book.appendChild(btn);
-    // display.appendChild(book);
 }
 
 function addBookToLibrary(bookTitle) {
@@ -48,7 +31,6 @@ function removeBook(bookID) {
     const element = document.getElementById(bookID);
     element.remove();
     // remove the Book from the myLibrary array as well
-    // myLibrary.splice(book.bookNumber, 1);
     myLibrary.splice(bookID, 1);
     displayBooks();
 }
@@ -56,21 +38,13 @@ function removeBook(bookID) {
 function readBook (bookID) {
     if(myLibrary[bookID].readYet == true) {
         myLibrary[bookID].readYet = false;
-        // console.log(myLibrary[bookID].readYet);
     }
     else {
         myLibrary[bookID].readYet = true;
-        // console.log(myLibrary[bookID].readYet);
-        // console.log('hi');
     }
     displayBooks();
-    // myLibrary[bookID].bookNumber = 15;
-    // console.log(myLibrary[bookID].bookNumber);
 }
 
-// THIS FUNCTION is messing up. There is a glitch where if you remove first book,
-// add a new book, then remove that new book, the book in the first position is
-// removed.
 function displayBooks() {
     // This while loop removes all children of display so that the display is
     // "cleared." This prevents duplicate books from being displayed if you try
@@ -85,20 +59,6 @@ function displayBooks() {
     // book from the myLibrary array, then appends the element as a child to the
     // display element.
     for(i = 0; i < myLibrary.length; i++) {
-        // const book = document.createElement('div');
-        // book.classList.add('book');
-        // book.textContent = myLibrary[i].info();
-
-        // const btn = document.createElement('button');
-        // btn.textContent = 'REMOVE';
-        // // THIS IS REMOVING THE LAST BOOK ONLY, NOT THE SPECIFIC BOOK YOU CLICK ON
-        // // btn.addEventListener('click', function() {removeBook(i-1);});
-        // btn.addEventListener('click', function() {removeBook(myLibrary[i-1]);});
-        // // console.log(i-1);
-        // book.appendChild(btn);
-
-        // display.appendChild(book);
-
         // This updates each book's bookNumber so that the book.id below is
         // up to date.
         myLibrary[i].bookNumber = i;
@@ -111,26 +71,19 @@ function displayBooks() {
 
         const btnRemove = document.createElement('button');
         btnRemove.textContent = 'REMOVE';
+        btnRemove.classList.add('in-book-button');
         // when you click the REMOVE button, execute the removeBook() function.
         btnRemove.addEventListener('click', () => {removeBook(book.id);});
 
         const btnRead = document.createElement('button');
         btnRead.textContent = 'READ';
+        btnRead.classList.add('in-book-button');
         btnRead.addEventListener('click', () => {readBook(book.id);});
 
         book.appendChild(btnRemove);
         book.appendChild(btnRead);
         display.appendChild(book);
     }
-
-    // NO LONGER NEEDED. The button is created in the HTML now, and
-    // the button is given an event listener in the code below this function.
-    // // Creates the NEW BOOK button and places it after the last book displayed.
-    // const newBookBtn = document.createElement('button');
-    // newBookBtn.classList.add('new-book-button');
-    // newBookBtn.textContent = 'NEW BOOK';
-    // newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
-    // display.appendChild(newBookBtn);
 }
 
 let myLibrary = [];
@@ -147,13 +100,3 @@ newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');
 // myLibrary[1] = new Book('The Return of the King', 'J.R.R. Tolkien', 295, false);
 addBookToLibrary('The Hobbit');
 addBookToLibrary('The Return of the King');
-
-// addBookToLibrary('The Hobbit');
-// addBookToLibrary('The Great Gatsby');
-// addBookToLibrary('The Fellowship of the Ring');
-// addBookToLibrary('The Two Towers');
-// addBookToLibrary('The Return of the King');
-// addBookToLibrary('Star Wars');
-// addBookToLibrary('The Empire Strikes Back');
-// addBookToLibrary('Return of the Jedi');
-// displayBooks();

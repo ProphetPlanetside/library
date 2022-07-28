@@ -1,13 +1,22 @@
 #display {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .book {
     background-color: aquamarine;
-    width: 120px;
-    height: 160px;
+    width: 160px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.in-book-button {
+    height: 25px;
+    width: 80px;
 }
 
 #new-book-button {
