@@ -5,7 +5,7 @@ function Book(title, author, numPages, readYet) {
     this.readYet = readYet;
     this.bookNumber = myLibrary.length;
     this.info = function() {
-        if(readYet) {
+        if(this.readYet) {
             return (title + ' by ' + author + ', ' + numPages + 
             ' pages, ' + 'read');
         }
@@ -27,7 +27,8 @@ function Book(title, author, numPages, readYet) {
     // btn.textContent = 'REMOVE';
     // // when you click the REMOVE button, execute the removeBook() function.
     // // btn.addEventListener('click', () => {removeBook(this);});
-    // btn.addEventListener('click', () => {removeBook(book.id);});
+    // // btn.addEventListener('click', () => {removeBook(book.id);});
+    // btn.addEventListener('click', () => {removeBook(this.bookNumber);});
     // book.appendChild(btn);
     // display.appendChild(book);
 }
@@ -42,7 +43,6 @@ function addBookToLibrary(bookTitle) {
 
 // Remove a book from the myLibrary array AND from the DOM/display.
 function removeBook(bookID) {
-    console.log(bookID);
     // Removes the DOM element corresponding to the 'book' parameter.
     // const element = document.getElementById(book.bookNumber);
     const element = document.getElementById(bookID);
@@ -50,7 +50,22 @@ function removeBook(bookID) {
     // remove the Book from the myLibrary array as well
     // myLibrary.splice(book.bookNumber, 1);
     myLibrary.splice(bookID, 1);
-    // displayBooks();
+    displayBooks();
+}
+
+function readBook (bookID) {
+    if(myLibrary[bookID].readYet == true) {
+        myLibrary[bookID].readYet = false;
+        // console.log(myLibrary[bookID].readYet);
+    }
+    else {
+        myLibrary[bookID].readYet = true;
+        // console.log(myLibrary[bookID].readYet);
+        // console.log('hi');
+    }
+    displayBooks();
+    // myLibrary[bookID].bookNumber = 15;
+    // console.log(myLibrary[bookID].bookNumber);
 }
 
 // THIS FUNCTION is messing up. There is a glitch where if you remove first book,
@@ -84,24 +99,27 @@ function displayBooks() {
 
         // display.appendChild(book);
 
-
-        // This section of code below is giving me issues.
-        // Specifically, the REMOVE button event listener.
-        // Somehow, passing in book.id and 'i' into removeBook() is not the same.
-        // Even though both values equal the same number.  Need to fix.
+        // This updates each book's bookNumber so that the book.id below is
+        // up to date.
+        myLibrary[i].bookNumber = i;
 
         const book = document.createElement('div');
         book.classList.add('book');
         // this #id will be used later when we have to delete specific books
         book.id = myLibrary[i].bookNumber;
         book.textContent = myLibrary[i].info();
-        const btn = document.createElement('button');
-        btn.textContent = 'REMOVE';
+
+        const btnRemove = document.createElement('button');
+        btnRemove.textContent = 'REMOVE';
         // when you click the REMOVE button, execute the removeBook() function.
-        // btn.addEventListener('click', () => {removeBook(this);});
-        btn.addEventListener('click', () => {removeBook(book.id);});
-        // btn.addEventListener('click', () => {removeBook(i);});
-        book.appendChild(btn);
+        btnRemove.addEventListener('click', () => {removeBook(book.id);});
+
+        const btnRead = document.createElement('button');
+        btnRead.textContent = 'READ';
+        btnRead.addEventListener('click', () => {readBook(book.id);});
+
+        book.appendChild(btnRemove);
+        book.appendChild(btnRead);
         display.appendChild(book);
     }
 
