@@ -30,14 +30,13 @@ function readForm() {
             bookForm[i].value = "";
         }
         if(bookForm[i].id == "pages") {
+            if(bookForm[i].value <= 0) {
+                alert('For Pages, please enter a value of 1 or greater.');
+                return;
+            }
             numPages = bookForm[i].value;
             bookForm[i].value = "";
         }
-        // if(bookForm[i].id == "title") {
-        //     title = bookForm[i].value;
-        // }
-        // text += bookForm[i].value;
-        // bookForm[i].value = "";
     }
     let readYesOrNo;
     for (const radioButton of radioButtons) {
@@ -132,11 +131,6 @@ let myLibrary = [];
 
 // Create the DOM element pointing to the display div
 const display = document.querySelector('#display');
-
-// No longer using the NEW BOOK button; using the HTML form instead.
-// Add the event listener to the NEW BOOK button, and have it create a new book.
-// const newBookBtn = document.getElementById('new-book-button');
-// newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
 
 // Create some books to initially populate the display, for testing purposes.
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);

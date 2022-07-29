@@ -11,6 +11,8 @@
     </head>
 
     <body>
+        <div class="header">MyLibrary.net</div>
+        <div class="form-header">Add a new Book</div>
         <form action="#" id="form1">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
@@ -18,7 +20,7 @@
             <input type="text" id="author" name="author">
             <label for="pages">Pages:</label>
             <input type="number" id="pages" name="pages">
-            <h2>Have You Read It?</h1>
+            <h3>Have You Read It?</h3>
 
             <div>
             <input type="radio" id="yes" name="read" value="yes">
@@ -29,14 +31,13 @@
             <input type="radio" id="no" name="read" value="no">
             <label for="no">No</label>
             </div>
-            
-            <!-- <button type="submit">Add Book</button> -->
+            <p></p>
+
             <input type="button" value="Add Book" onclick="readForm()">
             <button type="reset">Reset</button>
         </form>
+        <div class="library-header">Your Library</div>
         <div id="display"></div>
-        <!-- No longer needed; using the form above instead. -->
-        <!-- <button id="new-book-button">NEW BOOK</button> -->
     </body>
 
 </html>
