@@ -16,6 +16,32 @@ function Book(title, author, numPages, readYet) {
     }
 }
 
+function readForm() {
+    var bookForm = document.getElementById("form1");
+    const radioButtons = document.querySelectorAll('input[name="read"]');
+    var title, author, numPages, read;
+    for(i = 0; i < bookForm.length; i++) {
+        if(bookForm[i].id == "title") {
+            title = bookForm[i].value;
+        }
+        if(bookForm[i].id == "author") {
+            author = bookForm[i].value;
+        }
+        if(bookForm[i].id == "pages") {
+            numPages = bookForm[i].value;
+        }
+        // if(bookForm[i].id == "title") {
+        //     title = bookForm[i].value;
+        // }
+        // text += bookForm[i].value;
+        // bookForm[i].value = "";
+    }
+    console.log(title);
+    console.log(author);
+    console.log(numPages);
+    console.log(read);
+}
+
 function addBookToLibrary(bookTitle) {
     // Create a new Book object
     let book = new Book(bookTitle, 'J.R.R. Tolkien', 295, false, myLibrary.length);

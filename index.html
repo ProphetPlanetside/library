@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <form action="#" method ="post">
+        <form action="#" id="form1">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title">
             <label for="author">Author:</label>
@@ -19,15 +19,19 @@
             <label for="pages">Pages:</label>
             <input type="number" id="pages" name="pages">
             <h2>Have You Read It?</h1>
+
             <div>
             <input type="radio" id="yes" name="read" value="yes">
             <label for="yes">Yes</label>
             </div>
+
             <div>
             <input type="radio" id="no" name="read" value="no">
             <label for="no">No</label>
             </div>
-            <button type="submit">Add Book</button>
+            
+            <!-- <button type="submit">Add Book</button> -->
+            <input type="button" value="Add Book" onclick="readForm()">
             <button type="reset">Reset</button>
         </form>
         <div id="display"></div>
