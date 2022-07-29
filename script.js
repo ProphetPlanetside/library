@@ -36,10 +36,23 @@ function readForm() {
         // text += bookForm[i].value;
         // bookForm[i].value = "";
     }
-    console.log(title);
-    console.log(author);
-    console.log(numPages);
-    console.log(read);
+    let readYesOrNo;
+    for (const radioButton of radioButtons) {
+        if(radioButton.checked) {
+            readYesOrNo = radioButton.value;
+            break;
+        }
+    }
+    if(readYesOrNo == "yes")
+        read = true;
+    if(readYesOrNo == "no")
+        read = false;
+    // console.log(title);
+    // console.log(author);
+    // console.log(numPages);
+    // console.log(read);
+    if(title == "" || author == "" || numPages == "" || read == null)
+        console.log('input all values');
 }
 
 function addBookToLibrary(bookTitle) {
