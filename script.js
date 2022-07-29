@@ -23,12 +23,15 @@ function readForm() {
     for(i = 0; i < bookForm.length; i++) {
         if(bookForm[i].id == "title") {
             title = bookForm[i].value;
+            bookForm[i].value = "";
         }
         if(bookForm[i].id == "author") {
             author = bookForm[i].value;
+            bookForm[i].value = "";
         }
         if(bookForm[i].id == "pages") {
             numPages = bookForm[i].value;
+            bookForm[i].value = "";
         }
         // if(bookForm[i].id == "title") {
         //     title = bookForm[i].value;
@@ -40,6 +43,7 @@ function readForm() {
     for (const radioButton of radioButtons) {
         if(radioButton.checked) {
             readYesOrNo = radioButton.value;
+            radioButton.checked = false;
             break;
         }
     }
@@ -47,17 +51,16 @@ function readForm() {
         read = true;
     if(readYesOrNo == "no")
         read = false;
-    // console.log(title);
-    // console.log(author);
-    // console.log(numPages);
-    // console.log(read);
-    if(title == "" || author == "" || numPages == "" || read == null)
-        console.log('input all values');
+    if(title == "" || author == "" || numPages == "" || read == null) {
+        alert('Please fill in all 4 values to create the new book.');
+        return;
+    }
+    addBookToLibrary(title, author, numPages, read);
 }
 
-function addBookToLibrary(bookTitle) {
+function addBookToLibrary(bookTitle, bookAuthor, numPages, read) {
     // Create a new Book object
-    let book = new Book(bookTitle, 'J.R.R. Tolkien', 295, false, myLibrary.length);
+    let book = new Book(bookTitle, bookAuthor, numPages, read, myLibrary.length);
     // Add the new book to the myLibrary array
     myLibrary.push(book);
     displayBooks();
@@ -130,12 +133,11 @@ let myLibrary = [];
 // Create the DOM element pointing to the display div
 const display = document.querySelector('#display');
 
+// No longer using the NEW BOOK button; using the HTML form instead.
 // Add the event listener to the NEW BOOK button, and have it create a new book.
-const newBookBtn = document.getElementById('new-book-button');
-newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
+// const newBookBtn = document.getElementById('new-book-button');
+// newBookBtn.addEventListener('click', function() {addBookToLibrary('The Hobbit');});
 
 // Create some books to initially populate the display, for testing purposes.
-// myLibrary[0] = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-// myLibrary[1] = new Book('The Return of the King', 'J.R.R. Tolkien', 295, false);
-addBookToLibrary('The Hobbit');
-addBookToLibrary('The Return of the King');
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
+addBookToLibrary('The Return of the King', 'J.R.R. Tolkien', 295, false);

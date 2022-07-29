@@ -22,11 +22,3 @@ form {
     height: 25px;
     width: 80px;
 }
-
-#new-book-button {
-    height: 30px;
-    width: 90px;
-    margin: 20px;
-    /* align-self: center;
-    justify-self: center; */
-}
